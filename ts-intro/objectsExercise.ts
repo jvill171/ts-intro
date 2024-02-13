@@ -1,5 +1,18 @@
 // Write the Movie type alias to make the following two variables properly typed
 // Make sure that "originalTitle" is optional and "title" is readonly
+interface Movie {
+  title: string,
+  originalTitle?: string,
+  director: string,
+  releaseYear: number,
+  boxOffice: {
+    budget: number,
+    grossUS: number,
+    grossWorldwide: number,
+  }
+};
+
+
 const dune: Movie = {
   title: "Dune",
   originalTitle: "Dune Part One",
@@ -28,3 +41,7 @@ const cats: Movie = {
 
 // For example...
 // getProfit(cats) => -21166652
+
+const getProfit = ({boxOffice:{grossWorldwide, budget}}:Movie):number =>{
+  return grossWorldwide - budget;
+}
